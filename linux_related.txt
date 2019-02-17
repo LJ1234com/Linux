@@ -1,0 +1,27 @@
+
+
+
+/etc/apt/sources.list
+
+# 更新软件源
+sudo apt-get update
+# 更新软件
+sudo apt-get upgrade 
+
+
+ gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
