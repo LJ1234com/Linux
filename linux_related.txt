@@ -1,5 +1,25 @@
 
+1. 制作 U盘启动
+2. 插上u盘， 启动电脑，按F1/F2，设置Boot： boot option 里选对应的u盘（有两个，不要选UEFI：的那一个）
+3. 分区： / : 100G; swap: 50G; boot:1G; home:200G
+4. 安完后，重启，可能有grub错：
+   记住上面boot的分区，比如是 msdos3
+ root=（hd0,msdos3）
+ prefix=(hd0,msdos3)/grub 
+ insmod normal
+ normal
+ 
+ 再进入terminal输入下面命令：
+sudo update-grub
+sudo grub-install /dev/sda
 
+双系统启动Ubuntu的时候出现 error: file '/boot/grub/i386-pc/normal.mod' not found.grub rescue>
+https://blog.csdn.net/joffy/article/details/38409649
+
+刚刚装了ubuntu，遇到error：file /boot/grub/i386-pc /normal.mod not found
+https://blog.csdn.net/caser_hdmi/article/details/52305200
+
+------------------------------------------------------------------------------------
 
 /etc/apt/sources.list
 
@@ -8,8 +28,11 @@ sudo apt-get update
 # 更新软件
 sudo apt-get upgrade 
 
+调整菜单栏到下方
+sudo apt-get install unity-tweak-tool
+gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 
- gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+
 
 
 
