@@ -36,10 +36,13 @@ gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 #设置文件显示颜色：
 在home目录下执行 dircolors -p > .dircolors； 修改.dircolors； source .bashrc
 
-
-
-
-
+------------------------------------------------------
+Anaconda 中 opencv的cv2.imshow报错
+https://blog.csdn.net/a694262054/article/details/86376002
+conda remove opencv
+conda install -c menpo opencv
+pip install --upgrade pip
+pip install opencv-contrib-python (关键）
 
 
 
