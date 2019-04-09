@@ -45,7 +45,7 @@ pip install --upgrade pip
 pip install opencv-contrib-python (关键）
 
 
-
+百度云插件： https://blog.csdn.net/a499957739/article/details/79593286
 
 
 
