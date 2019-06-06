@@ -52,3 +52,27 @@ pip install opencv-contrib-python (关键）
 https://blog.csdn.net/Max_Loo/article/details/81304949
 
 
+
+安装pycuda：
+error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+https://blog.51cto.com/zhaopeiyan/2062016
+在ubuntu14.04版本上安装lxml，老是出错，在一番艰辛的搜索之后 ，终于找出了安装的正确方法，其实也就是没有将依赖包装全：
+
+sudo apt-get install libxml2-dev libxslt1-dev python-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get install libevent-dev
+sudo pip install lxml
+
+
+
+sudo apt-get install libevent-dev
+sudo apt-get install libevent-dev
+install libssl-dev
+pip3 install scrapy
+sudo apt install python3.6-dev
+
+
+
+
+
+
