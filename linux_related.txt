@@ -73,6 +73,12 @@ sudo apt install python3.6-dev
 
 
 
+2060显卡驱动安装：
+https://www.cnblogs.com/litifeng/p/10817562.html
+
+sudo apt install libnvidia-cfg1-430
+sudo apt install xserver-xorg-video-nvidia-430
+sudo apt install nvidia-driver-430
 
 
 
