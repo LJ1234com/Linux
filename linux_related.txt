@@ -105,3 +105,7 @@ update-alternatives: error: cannot scan directory '/var/lib/dpkg/alternatives': 
 E: Sub-process /usr/bin/dpkg returned an error code (1)
 sudo mv /var/lib/dpkg/info/grub-pc.* /tmp
 sudo mv /var/lib/dpkg/info/unattended-upgrades.* /tmp
+
+
+pytorch 官网： conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
+执行可能会报错： 修改 ~/.condarc
