@@ -84,7 +84,7 @@ sudo apt install nvidia-driver-430
 cuda安装：
 进入官网：https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=debnetwork
 选择 deb(network)  , 按步骤安装
-
+卸载：用官网 sudo apt-get --purge remove "*cublas*" "cuda*"
 
 E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or specify a solution)
 apt --fix-broken install
