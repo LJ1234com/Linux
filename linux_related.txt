@@ -133,3 +133,14 @@ sudo mv /var/lib/dpkg/info/unattended-upgrades.* /tmp
 
 pytorch 官网： conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 执行可能会报错： 修改 ~/.condarc
+
+
+
+jupyter notebook 添加 conda 环境
+1. conda install -n 'tmp.py'  ipykernel
+2. python3 -m ipykernel install --user --name "tmp.py" --display-name "Python3 tmp.py"
+这里的环境名是tmp.py, 可以在pytcharm里看：/home/lijian/anaconda3/envs/tmp.py/bin/python
+
+
+
+
