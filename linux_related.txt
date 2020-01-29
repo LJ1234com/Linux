@@ -143,4 +143,6 @@ jupyter notebook 添加 conda 环境
 
 
 
-
+安装ｆｌａｓｈ：
+１．下载flash_player_npapi_linux.x86_64.tar.gz，　并解压
+２．　sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
