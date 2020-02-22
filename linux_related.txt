@@ -2,6 +2,15 @@
 1. 制作 U盘启动
 2. 插上u盘， 启动电脑，按F1/F2，设置Boot： boot option 里选对应的u盘（有两个，不要选UEFI：的那一个）
 3. 分区： / : 100G; swap: 50G; boot:1G; home:200G
+4. 安装完。重启，无法重启，左上角有光标一直闪动
+用u盘启动ubuntu，执行以下命令
+sudo fdisk -l  // 这个命令帮助找到你的/boot分区安装位置，假设为/dev/sda6 
+sudo mount /dev/sda6 /mnt
+sudo grub-install --boot-directory=/mnt /dev/sda  //注意dev前面有空格
+https://www.louishe.com/2019/06/19/doc-4195.html
+https://blog.csdn.net/sinat_33384251/article/details/93136928
+
+
 4. 安完后，重启，可能有grub错：
    记住上面boot的分区，比如是 msdos3
  root=（hd0,msdos3）
@@ -18,6 +27,8 @@ https://blog.csdn.net/joffy/article/details/38409649
 
 刚刚装了ubuntu，遇到error：file /boot/grub/i386-pc /normal.mod not found
 https://blog.csdn.net/caser_hdmi/article/details/52305200
+
+
 
 ------------------------------------------------------------------------------------
 
@@ -146,3 +157,44 @@ jupyter notebook 添加 conda 环境
 安装ｆｌａｓｈ：
 １．下载flash_player_npapi_linux.x86_64.tar.gz，　并解压
 ２．　sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
+3. sudo cp -r usr/* /usr
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+安装quartus
+1，安装quartus，先把help,modelsim的叉叉去掉,后面再单独安装.
+2. 安装 modelsim
+3. 进入modelsim安装目录下的 Modelsim_ase/bin 运行./vsim 出现  Error: Cannot find ”./../linux_rh60/vsim", 修改 modelsim_ase/vco 文件,将vco="linux_rh60"修改为vco="linux"
+4. 安装32位库
+sudo apt-get update
+sudo apt-get install libgtk2.0-0:i386 libxtst6:i386 gtk2-engines-murrine:i386 lib32stdc++6 libxt6:i386 libdbus-glib-1-2:i386 libasound2:i386
+sudo apt-get install lib32ncurses5
+sudo apt-get install libxft2:i386
+
+5. 在 modelsim_ase/vco 文件,dir=`dirname "$arg0"`后面添加下面一行
+export LD_LIBRARY_PATH=${dir}/lib32
+
+6.在quartus/bin/quartus文件里，IFS=后面添加
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export LD_LIBRARY_PATH=${dir}/../../lib32
+7.在modelsim_ase下面建文件夹lib32， 把lib32.tar.gz加压到里面
+8. 在quartus里把modelsim-altera的路径设为：/home/lijian/intelFPGA_lite/19.1/modelsim_ase/bin
+
+https://www.jianshu.com/p/2c1528d8f1f0
+https://blog.csdn.net/weixin_38071135/article/details/82531594?utm_source=distribute.pc_relevant.none-task
+https://blog.csdn.net/heart_heroistired/article/details/50589612?utm_source=blogxgwz3
+https://coldnew.github.io/ce6f7a0a/
+https://wiki.archlinux.org/index.php/Altera_Design_Software#With_freetype2_2.5.0.1-1
+https://blog.csdn.net/Jarvis_wxy/article/details/89127222
+https://blog.csdn.net/ShiAokai/article/details/85125570
+https://download.savannah.gnu.org/releases/freetype/
+
+;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+
+
