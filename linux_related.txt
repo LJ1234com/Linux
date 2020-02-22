@@ -159,7 +159,9 @@ jupyter notebook 添加 conda 环境
 ２．　sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
 3. sudo cp -r usr/* /usr
 
-
+或命令安装
+  sudo apt install adobe-flashplugin
+  sudo apt-get install browser-plugin-freshplayer-pepperflash
 
 ;;;;;;;;;;;;;;;;;;;;;;
 安装quartus
