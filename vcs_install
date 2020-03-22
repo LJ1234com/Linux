@@ -1,1 +1,89 @@
-aaa
+1. 下载网盘里的 “vcs安装”
+2. 解压里面的 SynopsysInstaller.rar， 进入到解压目录，执行SynopsysInstaller_v3.3.run， 生成setup.sh
+3. 在home目录下，建文件夹synopsys， 再在里面建文件夹scl_11.9，vcs_2016.06，verdi_2016.06-1，  因为setup.sh是csh， 
+要sudo apt-get install csh，执行setup.sh， 安装相应软件到三个文件夹
+4. 下载scl_keygen 到windows，执行里面的scl_keygen.exe ， 要填linux下的hostname（命令：hostname）
+和HOST ID Deamon/HOST ID Feature， 这两个是一样的，可以在wifi setting中找hardware address，需去掉冒号， 生成Synopsys.dat。 
+在/home/lijian/synopsys/vcs_2016.06下建文件夹license， 将Synopsys.dat放入其中。
+5.修改Synopsys.dat
+           SERVER lijian 60ee5c7b4ced 27000
+           DAEMON /home/lijian/synopsys/scl_11.9/linux/bin/snpslmd
+6.在 .bashrc中添加
+##############synopsys
+#dve
+export PATH=$PATH:/home/lijian/synopsys/vcs_2016.06/gui/dve/bin
+#VCS
+export PATH=$PATH:/home/lijian/synopsys/vcs_2016.06/bin
+export VCS_HOME=/home/lijian/synopsys/vcs_2016.06
+
+#LICENCE
+export LM_LICENSE_FILE=/home/lijian/synopsys/vcs_2016.06/license/Synopsys.dat
+export SNPSLMD_LICENSE_FILE=27000@lijian
+#alias lmg_vcs=“lmgrd -c /home/lijian/synopsys/vcs_2016.06/license/Synopsys.dat”
+
+#scl
+export PATH=$PATH:/home/lijian/synopsys/scl_11.9/amd64/bin   #注意此处安装时玄德十amd64还是linux
+alias vcs="vcs -full64"
+#alias dvw="dve -full64"
+
+7.执行命令： lmgrd -c  /home/lijian/synopsys/vcs_2016.06/license/Synopsys.dat
+
+遇到问题：lmgrd: No such file or directory
+apt-get install lsb-core sb-base
+
+出错，信息/bin/sh: Illegal option -h
+sudo rm -f /bin/sh
+sudo ln -s /bin/bash /bin/sh
+
+
+运行 文件会报错：是因为gcc版本太高， 可以安装g++-4.8，gcc-4.8
+/usr/bin/ld: final link failed: Nonrepresentable section on output
+collect2: error: ld returned 1 exit status
+Makefile:104: recipe for target 'product_timestamp' failed
+make: *** [product_timestamp] Error 1
+Make exited with status 2
+命令：vcs -full64 -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,-no-as-needed -V -R add8_tb.v add8.v
+
+也可重新连接gcc：
+cd  /usr/bin
+ls -al |grep gcc 查看 gcc 连接版本
+sudo rm gcc
+sudo ln -s gcc-4.8 gcc
+sudo ln -s g++-4.8 g++
+gcc -v 确认版本
+
+
+运行epilog： vcs -sverilog -full64 -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,-no-as-needed -V -R tt.sv
+运行systemverilog：  vcs -sverilog -full64 -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,-no-as-needed -V -R tt.sv
+
+
+
+https://www.cnblogs.com/fundou/p/10872992.html
+https://blog.csdn.net/weixin_30405421/article/details/96531035?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+http://bbs.eetop.cn/thread-633801-1-1.html
+https://blog.csdn.net/Justdoforever/article/details/96600637?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+
+
+http://www.eecourse.com/group/7/thread/267
+https://blog.csdn.net/liujingyu_1205/article/details/81561781
+https://blog.csdn.net/limanjihe/article/details/52430284
+https://www.cnblogs.com/loves6036/p/5747754.html
+https://blog.csdn.net/qq_43042339/article/details/104437241
+https://blog.csdn.net/aiyimo_/article/details/102939689
+
+http://www.ictown.com/thread-106957-2-1.html
+http://bbs.eetop.cn/thread-660055-1-1.html
+http://bbs.eetop.cn/thread-481243-1-1.html
+http://bbs.eetop.cn/thread-263954-3-1.html
+http://bbs.eetop.cn/thread-476973-1-1.html
+https://blog.csdn.net/edablog/article/details/9033249
+http://bbs.eetop.cn/thread-839371-1-1.html
+
+
+
+
+
+
+
+
+
