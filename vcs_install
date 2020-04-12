@@ -7,7 +7,7 @@
 在/home/lijian/synopsys/vcs_2016.06下建文件夹license， 将Synopsys.dat放入其中。
 5.修改Synopsys.dat
            SERVER lijian 60ee5c7b4ced 27000
-           DAEMON /home/lijian/synopsys/scl_11.9/linux/bin/snpslmd
+           DAEMON /home/lijian/synopsys/scl_11.9/linux/bin/snpslmd   ？？貌似不应该加这句话
 6.在 .bashrc中添加
 ##############synopsys
 #dve
